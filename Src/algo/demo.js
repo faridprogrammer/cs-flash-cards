@@ -29,7 +29,7 @@ app.run(function($transform) {
 //
 app.config(function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'home.html', reloadOnSearch: false});
-  $routeProvider.when('/scroll', {templateUrl: 'scroll.html', reloadOnSearch: false});
+  $routeProvider.when('/heapSort', {templateUrl: 'itemDetail.html', reloadOnSearch: false});
   $routeProvider.when('/toggle', {templateUrl: 'toggle.html', reloadOnSearch: false});
   $routeProvider.when('/tabs', {templateUrl: 'tabs.html', reloadOnSearch: false});
   $routeProvider.when('/accordion', {templateUrl: 'accordion.html', reloadOnSearch: false});

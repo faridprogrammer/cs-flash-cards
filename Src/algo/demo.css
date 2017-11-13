@@ -3,6 +3,12 @@
   src: url(../dist/fonts/IRANSansWeb.woff2);
 }
 
+.description{
+
+  text-align: justify;
+
+}
+
 body {
   font-family: iranSans !important;
 }
