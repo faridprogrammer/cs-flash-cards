@@ -9,6 +9,11 @@
 
 }
 
+.sectionTitle{
+font-weight: bold;
+
+}
+
 body {
   font-family: iranSans !important;
 }
