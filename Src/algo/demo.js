@@ -28,11 +28,9 @@ app.run(function($transform) {
 // in order to avoid unwanted routing.
 //
 app.config(function($routeProvider) {
-  $routeProvider.when('/', {templateUrl: 'home.html', reloadOnSearch: false});
-  $routeProvider.when('/heapSort', {templateUrl: 'itemDetail.html', reloadOnSearch: false});
-  $routeProvider.when('/forms', {templateUrl: 'forms.html', reloadOnSearch: false});
+  $routeProvider.when('/', {templateUrl: 'home.html?v=1', reloadOnSearch: false});
+  $routeProvider.when('/item/:name', {templateUrl: 'itemDetail.html', reloadOnSearch: false});
 });
-
 
 //
 // For this trivial demo we have just a unique MainController
@@ -56,19 +54,11 @@ app.controller('MainController', function($rootScope, $scope) {
     $rootScope.loading = false;
   });
 
-  //
-  // 'Scroll' screen
-  //
-  var scrollItems = [];
+});
 
-  for (var i = 1; i <= 100; i++) {
-    scrollItems.push('Item ' + i);
-  }
-
-  $scope.scrollItems = scrollItems;
-
-  $scope.bottomReached = function() {
-    alert('Congrats you scrolled to the end of the list!');
-  };
-
+app.controller('itemDetailController', function($routeParams, $rootScope, $scope,$http) {
+  var url = "/algo/data/" + $routeParams.name + ".json";
+  $http.get(url).then(function(response){
+        $scope.model = response.data;
+    });
 });

@@ -1,24 +1,21 @@
-<div ui-content-for="title">
-  <span>مرتب سازی هرمی</span>
+<div ui-content-for="title" ng-controller="itemDetailController">
+  <span>{{model.localizedTitle}}</span>
 </div>
-
 <div class="scrollable">
  <div class="scrollable-content section">
-  <p class="description">یکی از روش‌های مرتب‌سازی داده‌هااست، که براساس خصوصیات درخت heap پیاده‌سازی شده‌است. بر اساس تعریف درخت heap، در یک max-heap یا min-heap بزرگترین یا کوچکترین مقدار بین داده‌ها همواره در ریشه درخت قرار دارد. یافتن بزرگترین یا کوچکترین عنصر بین عناصر، هزینه ثابت (Ө(۱ دارد. با حذف این عنصر از درخت، بزرگترین یا کوچکترین عنصر بعدی مجدداً در ریشه قرار می‌گیرد. به این ترتیب با حذف متوالی عناصر درخت heap و درج آنها در محل جدید، یک آرایه مرتب‌شده نزولی ویا صعودی به دست خواهد آمد.</p>
-  <span class="badge badge-primary">مرتب سازی</span>
-  <span class="badge badge-primary">هیپ</span>
+  <p class="description">{{model.description}}</p>
+  <span class="badge badge-primary" ng-repeat="item in model.tags ">{{item}}</span>
   <hr/>
   <h5 class="sectionTitle">پیچیدگی</h5>
-  <p>پیچیدگی این الگوریتم <code>O(logn)</code> می باشد</p>
+  <p>پیچیدگی این الگوریتم <code>{{model.complexity}}</code> می باشد</p>
   <hr/>
   <h5 class="sectionTitle">الگوریتم های مشابه</h5>
-  <p>الگوریتم مشابه 1، الگوریتم مشابه 2، الگوریتم مشابه 3</p>
+  <p><span ng-repeat="item in model.similarAlgorithms">{{item.title}}</span></p>
   <hr/>
   <h5 class="sectionTitle">کاربردها</h5>
   <p>
     <ul>
-      <li>کاربرد اول</li>  
-      <li>کاربرد دوم</li>  
+      <li ng-repeat="item in model.applications">{{item}}</li>  
     </ul>
   </p>
 </div>
