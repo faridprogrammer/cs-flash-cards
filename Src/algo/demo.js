@@ -30,6 +30,7 @@ app.run(function($transform) {
 app.config(function($routeProvider) {
   $routeProvider.when('/', {templateUrl: 'home.html?v=1', reloadOnSearch: false});
   $routeProvider.when('/item/:name', {templateUrl: 'itemDetail.html', reloadOnSearch: false});
+  $routeProvider.when('/category/:name', {templateUrl: 'categoryList.html', reloadOnSearch: false});
 });
 
 //
@@ -56,8 +57,20 @@ app.controller('MainController', function($rootScope, $scope) {
 
 });
 
-app.controller('itemDetailController', function($routeParams, $rootScope, $scope,$http) {
+app.controller('itemDetailController', function($routeParams, $rootScope, $scope,$http,$sce) {
+  $scope.toTrustedHTML = function (html) {
+    return $sce.trustAsHtml(html);
+  };
+  
   var url = "/algo/data/" + $routeParams.name + ".json";
+  $http.get(url).then(function(response){
+    debugger;
+        $scope.model = response.data;
+    });
+});
+
+app.controller('categoryController', function($routeParams, $rootScope, $scope,$http) {
+  var url = "/algo/data/categories/" + $routeParams.name + ".json";
   $http.get(url).then(function(response){
         $scope.model = response.data;
     });

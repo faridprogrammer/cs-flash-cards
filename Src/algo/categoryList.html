@@ -1,0 +1,14 @@
+﻿<div ng-controller="categoryController">
+  <div ui-content-for="title">
+    <span>{{ model.localizedTitle }}</span>
+  </div>
+  <div class="scrollable" >
+    <div class="scrollable-content" >
+      <div class="list-group">
+        <a ng-repeat="item in model.items" href="{{ '#/item/' + item.title }}" class="list-group-item">
+          {{ item.localizedTitle }} <i class="fa fa-chevron-left pull-left"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

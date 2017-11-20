@@ -1,22 +1,28 @@
-<div ui-content-for="title" ng-controller="itemDetailController">
-  <span>{{model.localizedTitle}}</span>
-</div>
-<div class="scrollable">
- <div class="scrollable-content section">
-  <p class="description">{{model.description}}</p>
-  <span class="badge badge-primary" ng-repeat="item in model.tags ">{{item}}</span>
-  <hr/>
-  <h5 class="sectionTitle">پیچیدگی</h5>
-  <p>پیچیدگی این الگوریتم <code>{{model.complexity}}</code> می باشد</p>
-  <hr/>
-  <h5 class="sectionTitle">الگوریتم های مشابه</h5>
-  <p><span ng-repeat="item in model.similarAlgorithms">{{item.title}}</span></p>
-  <hr/>
-  <h5 class="sectionTitle">کاربردها</h5>
-  <p>
-    <ul>
-      <li ng-repeat="item in model.applications">{{item}}</li>  
-    </ul>
-  </p>
-</div>
+<div ng-controller="itemDetailController">
+  <div ui-content-for="title" >
+    <span>{{model.localizedTitle}}</span>
+  </div>
+  <div class="scrollable">
+   <div class="scrollable-content section">
+    <p  ng-bind-html="toTrustedHTML(model.description)" class="description"></p>
+    <span class="badge badge-primary" ng-repeat="item in model.tags " style="margin-right: 5px">{{item}}</span>
+    <hr/>
+    <h5 class="sectionTitle">پیچیدگی</h5>
+    <p>پیچیدگی این الگوریتم <code dir="ltr">{{model.complexity}}</code> می باشد</p>
+    <hr/>
+    <h5 class="sectionTitle">کد</h5>
+      <div dir="ltr"><pre dir="ltr">{{ model.pseudoCode.join('') }}</pre></div>
+    <hr/>
+    <h5 class="sectionTitle">الگوریتم های مشابه</h5>
+    <p><span ng-repeat="item in model.similarAlgorithms">{{item.localizedTitle}}</span></p>
+    <hr/>
+    <h5 class="sectionTitle">کاربردها</h5>
+    <p>
+      <ul>
+        <li ng-repeat="item in model.applications">{{item}}</li>  
+      </ul>
+    </p>
+  </div>
+  </div>
+  
 </div>
